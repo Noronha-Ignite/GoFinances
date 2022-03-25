@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import HighlightCard from '../../components/HighlightCard';
 
 import {
   Avatar,
@@ -10,7 +11,8 @@ import {
   Header,
   ProfileInfo,
   UserWrapper,
-  LogoutIcon
+  LogoutIcon,
+  HighlightCards
 } from './styles';
 
 const Dashboard: React.FC = () => {
@@ -28,10 +30,16 @@ const Dashboard: React.FC = () => {
           </ProfileInfo>
 
           <TouchableOpacity>
-            <LogoutIcon name='power'/>
+            <LogoutIcon />
           </TouchableOpacity>
         </UserWrapper>
       </Header>
+
+      <HighlightCards>
+        <HighlightCard />
+        <HighlightCard />
+        <HighlightCard />
+      </HighlightCards>
     </Container>
   );
 }
