@@ -1,14 +1,37 @@
 import React from 'react';
-import { useTheme } from 'styled-components';
+import { TouchableOpacity } from 'react-native';
 
-import { Container, Title } from './styles';
+import {
+  Avatar,
+  Container,
+  User,
+  UserGreeting,
+  UserName,
+  Header,
+  ProfileInfo,
+  UserWrapper,
+  LogoutIcon
+} from './styles';
 
 const Dashboard: React.FC = () => {
-  const theme = useTheme();
 
   return (
     <Container>
-      <Title>Dashboard da Aplicação</Title>
+      <Header>
+        <UserWrapper>
+          <ProfileInfo>
+            <Avatar source={{ uri: 'https://github.com/Noronha1612.png' }} />
+            <User>
+              <UserGreeting>Olá, Bom dia</UserGreeting>
+              <UserName>Gabriel</UserName>
+            </User>
+          </ProfileInfo>
+
+          <TouchableOpacity>
+            <LogoutIcon name='power'/>
+          </TouchableOpacity>
+        </UserWrapper>
+      </Header>
     </Container>
   );
 }
