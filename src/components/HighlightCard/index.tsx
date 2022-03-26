@@ -1,5 +1,4 @@
 import React from 'react';
-import { Feather } from '@expo/vector-icons';
 
 import {
   Container,
@@ -11,13 +10,13 @@ import {
   LastTransaction,
 } from './styles';
 
-export type HighlightCardType = 'income' | 'outcome' | 'total';
+import { TransactionType } from '../../models/Transactions';
 
 interface HighlightCardProps {
   title: string;
   amount: string;
   lastTransaction: string;
-  type: HighlightCardType;
+  type: TransactionType;
 }
 
 const HighlightCard: React.FC<HighlightCardProps> = ({
