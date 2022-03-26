@@ -11,6 +11,7 @@ import {
 
 import Dashboard from './src/screens/Dashboard';
 import theme from './src/global/styles/theme';
+import { CategoriesProvider } from './src/contexts/useCategories';
 
 export function App() {
   const [fontsLoaded, error] = useFonts({
@@ -23,8 +24,10 @@ export function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar style="light" />
-      <Dashboard />
+      <CategoriesProvider>
+        <StatusBar style="light" />
+        <Dashboard />
+      </CategoriesProvider>
     </ThemeProvider>
   );
 }
