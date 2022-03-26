@@ -1,5 +1,9 @@
+import { FlatList, FlatListProps } from 'react-native';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
+import { Transaction } from '../../models/Transactions';
+import { FlatListType } from '../../models/Utils';
 
 export const Container = styled.View`
   flex: 1;
@@ -12,8 +16,11 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.text_contrast};
 `;
 
-export const TransactionsList = styled.FlatList.attrs({
+export const TransactionsList = styled(FlatList as FlatListType<Transaction>).attrs({
   showsVerticalScrollIndicator: false,
+  contentContainerStyle: {
+    paddingBottom: getBottomSpace(),
+  }
 })`
   width: 100%;
   flex: 1;

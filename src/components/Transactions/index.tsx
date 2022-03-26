@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ListRenderItemInfo } from 'react-native';
+import { FlatList } from 'react-native';
 import { Transaction } from '../../models/Transactions';
 
 import {
@@ -25,10 +25,8 @@ const Transactions: React.FC = () => {
 
       <TransactionsList
         data={transactions}
-        keyExtractor={((item: Transaction) => item.timestamp.toString()) as any}
-        renderItem={(({ item }: ListRenderItemInfo<Transaction>) => (
-          <TransactionCard transaction={item} />
-        )) as any}
+        keyExtractor={item => item.timestamp.toString()}
+        renderItem={(({ item }) => <TransactionCard transaction={item} />)}
       />
     </Container>
   );

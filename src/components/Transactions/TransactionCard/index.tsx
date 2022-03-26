@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
+
 import { useCategories } from '../../../contexts/useCategories';
 import { Transaction } from '../../../models/Transactions';
-import { Feather } from '@expo/vector-icons';
 
 import {
   Container,
@@ -37,7 +37,10 @@ const TransactionCard: React.FC<TransactionCardProps> = ({ transaction }) => {
   return (
     <Container>
       <Title>{transaction.name}</Title>
-      <Amount type={transaction.type}>{transaction.amount}</Amount>
+      <Amount type={transaction.type}>
+        {transaction.type === 'outcome' && '- '}
+        {transaction.amount}
+      </Amount>
 
       <Footer>
         <Category>
