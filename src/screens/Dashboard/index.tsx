@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import HighlightCard from '../../components/HighlightCard';
+import Transactions from '../../components/Transactions';
 
 import {
   Avatar,
@@ -12,7 +13,8 @@ import {
   ProfileInfo,
   UserWrapper,
   LogoutIcon,
-  HighlightCards
+  HighlightCards,
+  Content,
 } from './styles';
 
 const Dashboard: React.FC = () => {
@@ -55,6 +57,10 @@ const Dashboard: React.FC = () => {
           type='total'
         />
       </HighlightCards>
+
+      <Content>
+        <Transactions />
+      </Content>
     </Container>
   );
 }

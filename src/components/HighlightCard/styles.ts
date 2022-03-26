@@ -3,11 +3,10 @@ import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import theme from '../../global/styles/theme';
-
-import { HighlightCardType } from '.';
+import { TransactionType } from '../../models/Transactions';
 
 type TypeProps = {
-  cardType: HighlightCardType;
+  cardType: TransactionType;
 }
 
 type IconStyles = {
@@ -15,7 +14,7 @@ type IconStyles = {
   color: string;
 }
 
-function getFontColorByType(type: HighlightCardType, options?: { lessContrast?: boolean }) {
+function getFontColorByType(type: TransactionType, options?: { lessContrast?: boolean }) {
   if (type === 'total') {
     return theme.colors.shape;
   }
@@ -23,7 +22,7 @@ function getFontColorByType(type: HighlightCardType, options?: { lessContrast?: 
   return options?.lessContrast ? theme.colors.text : theme.colors.title;
 }
 
-function getIconStylesByType(type: HighlightCardType): IconStyles {
+function getIconStylesByType(type: TransactionType): IconStyles {
   switch(type) {
     case 'income':
       return { name: 'arrow-up-circle', color: theme.colors.success};
