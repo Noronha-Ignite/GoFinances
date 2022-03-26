@@ -1,4 +1,5 @@
 import React from 'react';
+import { Feather } from '@expo/vector-icons';
 
 import {
   Container,
@@ -10,18 +11,32 @@ import {
   LastTransaction,
 } from './styles';
 
-const HighlightCard: React.FC = () => {
-  return (
-    <Container>
-      <Header>
-        <Title>Entrada</Title>
+export type HighlightCardType = 'income' | 'outcome' | 'total';
 
-        <Icon name='arrow-up-circle'/>
+interface HighlightCardProps {
+  title: string;
+  amount: string;
+  lastTransaction: string;
+  type: HighlightCardType;
+}
+
+const HighlightCard: React.FC<HighlightCardProps> = ({
+  title,
+  amount,
+  lastTransaction,
+  type
+}) => {
+  return (
+    <Container cardType={type}>
+      <Header>
+        <Title cardType={type}>{title}</Title>
+
+        <Icon cardType={type}/>
       </Header>
 
       <Content>
-        <Amount>R$ 17.400,00</Amount>
-        <LastTransaction>Última entrada dia 13 de abril</LastTransaction>
+        <Amount cardType={type}>{amount}</Amount>
+        <LastTransaction cardType={type}>{lastTransaction}</LastTransaction>
       </Content>
     </Container>
   );
