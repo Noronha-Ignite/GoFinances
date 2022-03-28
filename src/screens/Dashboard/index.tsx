@@ -2,17 +2,10 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import HighlightCard from '../../components/HighlightCard';
 import Transactions from '../../components/Transactions';
+import Header from './Header';
 
 import {
-  Avatar,
   Container,
-  User,
-  UserGreeting,
-  UserName,
-  Header,
-  ProfileInfo,
-  UserWrapper,
-  LogoutIcon,
   HighlightCards,
   Content,
 } from './styles';
@@ -21,21 +14,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container>
-      <Header>
-        <UserWrapper>
-          <ProfileInfo>
-            <Avatar source={{ uri: 'https://github.com/Noronha1612.png' }} />
-            <User>
-              <UserGreeting>Olá, Bom dia</UserGreeting>
-              <UserName>Gabriel</UserName>
-            </User>
-          </ProfileInfo>
-
-          <TouchableOpacity>
-            <LogoutIcon />
-          </TouchableOpacity>
-        </UserWrapper>
-      </Header>
+      <Header />
 
       <HighlightCards>
         <HighlightCard
