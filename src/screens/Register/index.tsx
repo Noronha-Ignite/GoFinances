@@ -1,4 +1,6 @@
 import React from 'react';
+
+import Button from '../../components/Forms/Button';
 import Input from '../../components/Forms/Input';
 
 import {
@@ -24,6 +26,8 @@ const Register: React.FC = () => {
           placeholder='Preço'
           style={{ marginBottom: 8 }}
         />
+
+        <Button>Enviar</Button>
       </Form>
     </Container>
   );
