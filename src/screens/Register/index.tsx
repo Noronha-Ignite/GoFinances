@@ -7,7 +7,8 @@ import {
   Container,
   Header,
   Title,
-  Form
+  Form,
+  InputFields
 } from './styles';
 
 const Register: React.FC = () => {
@@ -18,14 +19,16 @@ const Register: React.FC = () => {
       </Header>
 
       <Form>
-        <Input
-          placeholder='Nome'
-          style={{ marginBottom: 8 }}
-        />
-        <Input
-          placeholder='Preço'
-          style={{ marginBottom: 8 }}
-        />
+        <InputFields>
+          <Input
+            placeholder='Nome'
+            style={{ marginBottom: 8 }}
+          />
+          <Input
+            placeholder='Preço'
+            style={{ marginBottom: 8 }}
+          />
+        </InputFields>
 
         <Button>Enviar</Button>
       </Form>

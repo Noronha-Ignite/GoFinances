@@ -31,3 +31,7 @@ export const Form = styled.View`
   
   padding: 24px;
 `;
+
+export const InputFields = styled.View`
+  flex: 1;
+`;
