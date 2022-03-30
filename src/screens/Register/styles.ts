@@ -35,3 +35,9 @@ export const Form = styled.View`
 export const InputFields = styled.View`
   flex: 1;
 `;
+
+export const TransactionButtonsWrapper = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  
+`;
