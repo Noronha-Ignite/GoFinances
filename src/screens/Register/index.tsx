@@ -3,11 +3,10 @@ import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import { FormTransactionType } from '../../components/Forms/TransactionTypeButton';
 import TransactionTypeSelect from '../../components/Forms/TransactionTypeSelect';
+import ScreenHeader from '../../components/ScreenHeader';
 
 import {
   Container,
-  Header,
-  Title,
   Form,
   SubmitButton,
   FormInput,
@@ -20,9 +19,7 @@ const Register: React.FC = () => {
 
   return (
     <Container>
-      <Header>
-        <Title>Cadastro</Title>
-      </Header>
+      <ScreenHeader title='Cadastro' />
 
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Form>
