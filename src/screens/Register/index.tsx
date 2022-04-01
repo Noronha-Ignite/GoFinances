@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
+import { Keyboard, ScrollView, TouchableWithoutFeedback } from 'react-native';
 
-import Button from '../../components/Forms/Button';
-import Input from '../../components/Forms/Input';
-import TransactionTypeButton, { FormTransactionType } from '../../components/Forms/TransactionTypeButton';
+import { FormTransactionType } from '../../components/Forms/TransactionTypeButton';
 
 import {
   Container,
   Header,
   Title,
   Form,
-  InputFields,
-  TransactionButtonsWrapper
+  TransactionButtonsWrapper,
+  SubmitButton,
+  FormInput,
+  FormTransactionTypeButton,
+  InputFields
 } from './styles';
 
 const Register: React.FC = () => {
@@ -22,34 +24,35 @@ const Register: React.FC = () => {
         <Title>Cadastro</Title>
       </Header>
 
-      <Form>
-        <InputFields>
-          <Input
-            placeholder='Nome'
-            style={{ marginBottom: 8 }}
-          />
-          <Input
-            placeholder='Preço'
-            style={{ marginBottom: 8 }}
-          />
-          <TransactionButtonsWrapper>
-            <TransactionTypeButton
-              onPress={() => setTransactionType('income')}
-              selected={transactionType === 'income'}
-              type='income'
-              style={{ marginRight: 4 }}
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <Form>
+          <InputFields
+            keyboardShouldPersistTaps='handled'
+          >
+            <FormInput
+              placeholder='Nome'
             />
-            <TransactionTypeButton
-              onPress={() => setTransactionType('outcome')}
-              selected={transactionType === 'outcome'}
-              type='outcome'
-              style={{ marginLeft: 4 }}
+            <FormInput
+              placeholder='Preço'
+              keyboardType='numeric'
             />
-          </TransactionButtonsWrapper>
-        </InputFields>
+            <TransactionButtonsWrapper>
+              <FormTransactionTypeButton
+                onPress={() => setTransactionType('income')}
+                selected={transactionType === 'income'}
+                type='income'
+              />
+              <FormTransactionTypeButton
+                onPress={() => setTransactionType('outcome')}
+                selected={transactionType === 'outcome'}
+                type='outcome'
+              />
+            </TransactionButtonsWrapper>
+          </InputFields>
 
-        <Button>Enviar</Button>
-      </Form>
+          <SubmitButton>Enviar</SubmitButton>
+        </Form>
+      </TouchableWithoutFeedback>
     </Container>
   );
 }
