@@ -14,6 +14,7 @@ import { CategoriesProvider } from './src/contexts/useCategories';
 
 import Dashboard from './src/screens/Dashboard';
 import Register from './src/screens/Register';
+import CategorySelector from './src/screens/Register/CategorySelector';
 
 export function App() {
   const [fontsLoaded, error] = useFonts({
@@ -28,7 +29,7 @@ export function App() {
     <ThemeProvider theme={theme}>
       <CategoriesProvider>
         <StatusBar style="light" />
-        <Register />
+        <CategorySelector />
       </CategoriesProvider>
     </ThemeProvider>
   );
