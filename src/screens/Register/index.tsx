@@ -11,7 +11,8 @@ import {
   Form,
   SubmitButton,
   FormInput,
-  InputFields
+  InputFields,
+  FormCategorySelectButton
 } from './styles';
 
 const Register: React.FC = () => {
@@ -39,6 +40,8 @@ const Register: React.FC = () => {
               value={transactionType}
               onChangeValue={newValue => setTransactionType(newValue)}
             />
+
+            <FormCategorySelectButton />
           </InputFields>
 
           <SubmitButton>Enviar</SubmitButton>

@@ -3,6 +3,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 
 import Button from '../../components/Forms/Button';
+import CategorySelectButton from '../../components/Forms/CategorySelectButton';
 import Input from '../../components/Forms/Input';
 import TransactionTypeButton from '../../components/Forms/TransactionTypeButton';
 
@@ -52,3 +53,7 @@ export const FormInput = styled(Input)`
 export const SubmitButton = styled(Button)`
   margin-bottom: 24px;
 `;
+
+export const FormCategorySelectButton = styled(CategorySelectButton)`
+  margin-top: 16px;
+`
