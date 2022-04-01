@@ -49,20 +49,6 @@ export const FormInput = styled(Input)`
   margin-bottom: 8px;
 `;
 
-export const TransactionButtonsWrapper = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 8px;
-`;
-
 export const SubmitButton = styled(Button)`
   margin-bottom: 24px;
 `;
-
-type FormTransactionTypeButtonProps = {
-  type: 'income' | 'outcome';
-}
-
-export const FormTransactionTypeButton = styled(TransactionTypeButton)<FormTransactionTypeButtonProps>`
-  margin: ${({ type }) => type === 'income' ? '0 4px 0 0' : '0 0 0 4px'};
-`

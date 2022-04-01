@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { Keyboard, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import { FormTransactionType } from '../../components/Forms/TransactionTypeButton';
+import TransactionTypeSelect from './components/TransactionTypeSelect';
 
 import {
   Container,
   Header,
   Title,
   Form,
-  TransactionButtonsWrapper,
   SubmitButton,
   FormInput,
-  FormTransactionTypeButton,
   InputFields
 } from './styles';
 
@@ -36,18 +35,10 @@ const Register: React.FC = () => {
               placeholder='Preço'
               keyboardType='numeric'
             />
-            <TransactionButtonsWrapper>
-              <FormTransactionTypeButton
-                onPress={() => setTransactionType('income')}
-                selected={transactionType === 'income'}
-                type='income'
-              />
-              <FormTransactionTypeButton
-                onPress={() => setTransactionType('outcome')}
-                selected={transactionType === 'outcome'}
-                type='outcome'
-              />
-            </TransactionButtonsWrapper>
+            <TransactionTypeSelect
+              value={transactionType}
+              onChangeValue={newValue => setTransactionType(newValue)}
+            />
           </InputFields>
 
           <SubmitButton>Enviar</SubmitButton>
