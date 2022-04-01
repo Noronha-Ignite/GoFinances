@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FormTransactionType } from '../../../../components/Forms/TransactionTypeButton';
+import { FormTransactionType } from '../TransactionTypeButton';
 
 import { Container, FormTransactionTypeButton } from './styles';
 

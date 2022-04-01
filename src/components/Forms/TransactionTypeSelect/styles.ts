@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import TransactionTypeButton from '../../../../components/Forms/TransactionTypeButton';
+import TransactionTypeButton from '../TransactionTypeButton';
 
 export const Container = styled.View`
   flex-direction: row;

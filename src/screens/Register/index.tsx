@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 import { FormTransactionType } from '../../components/Forms/TransactionTypeButton';
-import TransactionTypeSelect from './components/TransactionTypeSelect';
+import TransactionTypeSelect from '../../components/Forms/TransactionTypeSelect';
 
 import {
   Container,
