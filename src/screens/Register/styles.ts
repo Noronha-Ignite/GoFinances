@@ -25,7 +25,9 @@ export const InputFields = styled.ScrollView`
   margin-bottom: 24px;
 `;
 
-export const FormInput = styled(Input)`
+export const FormInput = styled(Input).attrs(({ theme }) => ({
+  placeholderTextColor: theme.colors.text,
+}))`
   margin-bottom: 8px;
 `;
 

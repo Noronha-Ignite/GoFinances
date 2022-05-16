@@ -15,6 +15,11 @@ export const Container = styled(TouchableOpacity)`
   align-items: center;
 `;
 
+export const CategoryIcon = styled(Feather)`
+  font-size: ${RFValue(20)}px;
+  margin-right: 16px;
+`;
+
 export const CategorySelected = styled.Text`
   font-size: ${RFValue(14)}px;
   color: ${({ theme }) => theme.colors.text};

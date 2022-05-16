@@ -4,6 +4,7 @@ import Button from '../../../components/Forms/Button';
 import ScreenHeader from '../../../components/ScreenHeader';
 
 import { useCategories } from '../../../contexts/useCategories';
+import { Category } from '../../../models/Category';
 
 import {
   CategoryIcon,
@@ -15,7 +16,17 @@ import {
   Footer
 } from './styles';
 
-const CategorySelector: React.FC = () => {
+type Props = {
+  selectedCategory?: string;
+  setCategory?(category: Category): void;
+  closeSelectCategory?(): void;
+}
+
+const CategorySelector: React.FC<Props> = ({
+  selectedCategory,
+  setCategory,
+  closeSelectCategory
+}) => {
   const { categories } = useCategories();
 
   return (
@@ -27,7 +38,11 @@ const CategorySelector: React.FC = () => {
         keyExtractor={item => item.key}
         ItemSeparatorComponent={() => <Divider />}
         renderItem={({ item }) => (
-          <CategoryItem>
+          <CategoryItem
+            onPress={() => setCategory?.(item)}
+            selected={item.key === selectedCategory}
+            activeOpacity={.6}
+          >
             <CategoryIcon name={item.icon} color={item.color} />
             <CategoryItemText color={item.color}>{item.name}</CategoryItemText>
           </CategoryItem>
@@ -35,7 +50,7 @@ const CategorySelector: React.FC = () => {
       />
 
       <Footer>
-        <Button>Selecionar</Button>
+        <Button onPress={closeSelectCategory}>Selecionar</Button>
       </Footer>
     </Container>
   );

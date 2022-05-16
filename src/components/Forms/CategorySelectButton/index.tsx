@@ -1,14 +1,22 @@
 import React from 'react';
 import { TouchableOpacityProps } from 'react-native';
+import { Category } from '../../../models/Category';
 
-import { ArrowDownIcon, CategorySelected, Container } from './styles';
+import { ArrowDownIcon, CategorySelected, Container, CategoryIcon } from './styles';
 
-type CategorySelectButton = TouchableOpacityProps;
+type CategorySelectButton = TouchableOpacityProps & {
+  selectedCategory?: Category;
+};
 
-const CategorySelectButton: React.FC<CategorySelectButton> = ({ ...rest }) => {
+const CategorySelectButton: React.FC<CategorySelectButton> = ({ selectedCategory, ...rest }) => {
   return (
     <Container {...rest}>
-      <CategorySelected>Categoria</CategorySelected>
+      {selectedCategory && (
+        <CategoryIcon name={selectedCategory.icon} color={selectedCategory.color} />
+      )}
+      <CategorySelected style={selectedCategory && { color: selectedCategory.color }}>
+        {selectedCategory?.name ?? 'Categoria'}
+      </CategorySelected>
       <ArrowDownIcon />
     </Container>
   );

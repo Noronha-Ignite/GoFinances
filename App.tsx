@@ -29,7 +29,7 @@ export function App() {
     <ThemeProvider theme={theme}>
       <CategoriesProvider>
         <StatusBar style="light" />
-        <CategorySelector />
+        <Register />
       </CategoriesProvider>
     </ThemeProvider>
   );

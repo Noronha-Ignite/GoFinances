@@ -6,6 +6,7 @@ import styled from 'styled-components/native';
 import { Category } from '../../../models/Category';
 import { FlatListType } from '../../../models/Utils';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
+import color from 'color';
 
 export const Container = styled.View`
   flex: 1;
@@ -17,8 +18,21 @@ export const CategoryList = styled(FlatList as FlatListType<Category>)`
   flex: 1;
 `;
 
-export const CategoryItem = styled.TouchableOpacity`
-  background: ${({ theme }) => theme.colors.shape};
+type CategoryItemProps = {
+  selected?: boolean;
+}
+
+export const CategoryItem = styled.TouchableOpacity<CategoryItemProps>`
+  background: ${({
+      theme: {
+        colors: {
+          shape,
+          success_light
+        }
+      },
+      selected
+    }) => color(selected ? success_light : shape).alpha(0.15).string()
+  };
   
   flex-direction: row;
   align-items: center;

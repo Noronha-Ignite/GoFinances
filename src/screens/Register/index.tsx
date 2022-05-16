@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { Keyboard, TouchableWithoutFeedback, Modal } from 'react-native';
 
 import { FormTransactionType } from '../../components/Forms/TransactionTypeButton';
 import TransactionTypeSelect from '../../components/Forms/TransactionTypeSelect';
 import ScreenHeader from '../../components/ScreenHeader';
+import { Category } from '../../models/Category';
+import CategorySelector from './CategorySelector';
 
 import {
   Container,
@@ -16,6 +18,9 @@ import {
 
 const Register: React.FC = () => {
   const [transactionType, setTransactionType] = useState<FormTransactionType>();
+  const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
+
+  const [category, setCategory] = useState<Category>();
 
   return (
     <Container>
@@ -38,12 +43,23 @@ const Register: React.FC = () => {
               onChangeValue={newValue => setTransactionType(newValue)}
             />
 
-            <FormCategorySelectButton />
+            <FormCategorySelectButton
+              selectedCategory={category}
+              onPress={() => setIsCategoryModalOpen(true)}
+            />
           </InputFields>
 
           <SubmitButton>Enviar</SubmitButton>
         </Form>
       </TouchableWithoutFeedback>
+
+      <Modal visible={isCategoryModalOpen}>
+        <CategorySelector
+          selectedCategory={category?.key}
+          setCategory={setCategory}
+          closeSelectCategory={() => setIsCategoryModalOpen(false)}
+        />
+      </Modal>
     </Container>
   );
 }
