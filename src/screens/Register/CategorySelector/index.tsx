@@ -17,7 +17,7 @@ import {
 } from './styles';
 
 type Props = {
-  selectedCategory?: string;
+  selectedCategory?: Category;
   setCategory?(category: Category): void;
   closeSelectCategory?(): void;
 }
@@ -40,7 +40,7 @@ const CategorySelector: React.FC<Props> = ({
         renderItem={({ item }) => (
           <CategoryItem
             onPress={() => setCategory?.(item)}
-            selected={item.key === selectedCategory}
+            selected={item.key === selectedCategory?.key}
             activeOpacity={.6}
           >
             <CategoryIcon name={item.icon} color={item.color} />

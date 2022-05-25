@@ -1,4 +1,4 @@
-import { FlatList } from 'react-native';
+import { FlatList, Platform } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
@@ -7,11 +7,12 @@ import { Category } from '../../../models/Category';
 import { FlatListType } from '../../../models/Utils';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import color from 'color';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-export const Container = styled.View`
+export const Container = styled(GestureHandlerRootView)`
   flex: 1;
   background: ${({ theme }) => theme.colors.background};
-  padding-bottom: ${getBottomSpace() + 8}px;
+  padding-bottom: ${Platform.OS === 'ios' ? getBottomSpace() : 24}px;
 `;
 
 export const CategoryList = styled(FlatList as FlatListType<Category>)`

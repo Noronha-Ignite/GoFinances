@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Keyboard, TouchableWithoutFeedback, Modal } from 'react-native';
+import Button from '../../components/Forms/Button';
 
 import { FormTransactionType } from '../../components/Forms/TransactionTypeButton';
 import TransactionTypeSelect from '../../components/Forms/TransactionTypeSelect';
@@ -10,7 +11,6 @@ import CategorySelector from './CategorySelector';
 import {
   Container,
   Form,
-  SubmitButton,
   FormInput,
   InputFields,
   FormCategorySelectButton
@@ -49,13 +49,13 @@ const Register: React.FC = () => {
             />
           </InputFields>
 
-          <SubmitButton>Enviar</SubmitButton>
+          <Button>Enviar</Button>
         </Form>
       </TouchableWithoutFeedback>
 
       <Modal visible={isCategoryModalOpen}>
         <CategorySelector
-          selectedCategory={category?.key}
+          selectedCategory={category}
           setCategory={setCategory}
           closeSelectCategory={() => setIsCategoryModalOpen(false)}
         />
