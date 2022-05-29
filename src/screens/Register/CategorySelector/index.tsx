@@ -1,4 +1,5 @@
 import React from 'react';
+import { Control, useController } from 'react-hook-form';
 import Button from '../../../components/Forms/Button';
 
 import ScreenHeader from '../../../components/ScreenHeader';
@@ -17,16 +18,22 @@ import {
 } from './styles';
 
 type Props = {
-  selectedCategory?: Category;
-  setCategory?(category: Category): void;
+  control: Control<any>;
+  name: string;
   closeSelectCategory?(): void;
 }
 
 const CategorySelector: React.FC<Props> = ({
-  selectedCategory,
-  setCategory,
+  control,
+  name,
   closeSelectCategory
 }) => {
+  const { field } = useController({
+    name,
+    control,
+    defaultValue: undefined,
+  });
+
   const { categories } = useCategories();
 
   return (
@@ -39,8 +46,8 @@ const CategorySelector: React.FC<Props> = ({
         ItemSeparatorComponent={() => <Divider />}
         renderItem={({ item }) => (
           <CategoryItem
-            onPress={() => setCategory?.(item)}
-            selected={item.key === selectedCategory?.key}
+            onPress={() => field.onChange(item)}
+            selected={item.key === field.value?.key}
             activeOpacity={.6}
           >
             <CategoryIcon name={item.icon} color={item.color} />

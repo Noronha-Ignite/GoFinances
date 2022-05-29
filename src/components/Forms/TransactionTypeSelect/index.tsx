@@ -1,35 +1,42 @@
 import React from 'react';
+import { Control, useController } from 'react-hook-form';
 
 import { FormTransactionType } from '../TransactionTypeButton';
 
 import { Container, FormTransactionTypeButton } from './styles';
 
 type TransactionTypeSelectProps = {
-  value?: FormTransactionType;
-  onChangeValue: (newTransactionValue: FormTransactionType) => void;
-}
+  control: Control<any>;
+  name: string;
+};
 
-const TransactionTypeSelect: React.FC<TransactionTypeSelectProps> = ({ value, onChangeValue }) => {
+const TransactionTypeSelect: React.FC<TransactionTypeSelectProps> = ({ control, name }) => {
+  const { field } = useController({
+    name,
+    control,
+    defaultValue: 'income',
+  });
+
   const handleChangeValue = (newValue: FormTransactionType) => {
-    if (value === newValue) return;
+    if (field.value === newValue) return;
 
-    onChangeValue(newValue);
-  }
+    field.onChange(newValue);
+  };
 
   return (
     <Container>
       <FormTransactionTypeButton
         onPress={() => handleChangeValue('income')}
-        selected={value === 'income'}
-        type='income'
+        selected={field.value === 'income'}
+        type="income"
       />
       <FormTransactionTypeButton
         onPress={() => handleChangeValue('outcome')}
-        selected={value === 'outcome'}
-        type='outcome'
+        selected={field.value === 'outcome'}
+        type="outcome"
       />
     </Container>
   );
-}
+};
 
 export default TransactionTypeSelect;

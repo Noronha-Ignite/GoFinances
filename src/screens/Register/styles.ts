@@ -1,5 +1,4 @@
 import { Platform } from 'react-native';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
 import styled from 'styled-components/native';
 
 import CategorySelectButton from '../../components/Forms/CategorySelectButton';
@@ -8,7 +7,6 @@ import Input from '../../components/Forms/Input';
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
-  padding-bottom: ${getBottomSpace()}px;
 `;
 
 export const Form = styled.KeyboardAvoidingView.attrs({

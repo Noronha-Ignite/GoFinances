@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Keyboard, TouchableWithoutFeedback, Modal } from 'react-native';
-import Button from '../../components/Forms/Button';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 
-import { FormTransactionType } from '../../components/Forms/TransactionTypeButton';
+import Button from '../../components/Forms/Button';
 import TransactionTypeSelect from '../../components/Forms/TransactionTypeSelect';
 import ScreenHeader from '../../components/ScreenHeader';
 import { Category } from '../../models/Category';
 import CategorySelector from './CategorySelector';
+import { RegisterSchema } from './validator';
 
 import {
   Container,
@@ -16,11 +19,24 @@ import {
   FormCategorySelectButton
 } from './styles';
 
+type FormFields = {
+  name: string;
+  price: string;
+  type: 'income' | 'outcome';
+  category: Category;
+}
+
 const Register: React.FC = () => {
-  const [transactionType, setTransactionType] = useState<FormTransactionType>();
+  const { control, watch, handleSubmit, formState: { errors } } = useForm<FormFields>({
+    mode: 'onBlur',
+    resolver: yupResolver(RegisterSchema),
+  });
+
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
 
-  const [category, setCategory] = useState<Category>();
+  const onSubmit = (data: FormFields) => {
+    console.log(data);
+  }
 
   return (
     <Container>
@@ -33,30 +49,39 @@ const Register: React.FC = () => {
           >
             <FormInput
               placeholder='Nome'
+              control={control}
+              name="name"
             />
             <FormInput
               placeholder='Preço'
               keyboardType='numeric'
+              control={control}
+              name="price"
             />
             <TransactionTypeSelect
-              value={transactionType}
-              onChangeValue={newValue => setTransactionType(newValue)}
+              control={control}
+              name='type'
             />
 
             <FormCategorySelectButton
-              selectedCategory={category}
+              selectedCategory={watch('category')}
               onPress={() => setIsCategoryModalOpen(true)}
             />
           </InputFields>
 
-          <Button>Enviar</Button>
+          <Button
+            onPress={handleSubmit(onSubmit)}
+            style={{ marginBottom: getBottomSpace() }}
+          >
+            Enviar
+          </Button>
         </Form>
       </TouchableWithoutFeedback>
 
       <Modal visible={isCategoryModalOpen}>
         <CategorySelector
-          selectedCategory={category}
-          setCategory={setCategory}
+          control={control}
+          name="category"
           closeSelectCategory={() => setIsCategoryModalOpen(false)}
         />
       </Modal>
