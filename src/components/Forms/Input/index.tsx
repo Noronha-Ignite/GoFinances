@@ -1,15 +1,16 @@
 import React from 'react';
-import { Control, useController } from 'react-hook-form';
+import { Control, ErrorOption, useController } from 'react-hook-form';
 import { TextInputProps } from 'react-native';
-import { Container } from './styles';
+import { Container, Error } from './styles';
 
 
 interface InputProps extends TextInputProps {
   control: Control<any>;
   name: string;
+  error?: ErrorOption;
 }
 
-const Input: React.FC<InputProps> = ({ control, name, ...rest }) => {
+const Input: React.FC<InputProps> = ({ control, name, error, ...rest }) => {
   const {
     field: { onChange, value },
   } = useController({
@@ -18,7 +19,14 @@ const Input: React.FC<InputProps> = ({ control, name, ...rest }) => {
     defaultValue: '',
   });
 
-  return <Container {...rest} value={value} onChangeText={onChange} />;
+  return (
+    <>
+      {error && (
+        <Error>{error.message}</Error>
+      )}
+      <Container {...rest} value={value} onChangeText={onChange} hasError={!!error} />
+    </>
+  );
 };
 
 export default Input;

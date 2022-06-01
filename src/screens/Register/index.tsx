@@ -1,7 +1,7 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Keyboard, TouchableWithoutFeedback, Modal } from 'react-native';
+import { Keyboard, Modal, TouchableWithoutFeedback } from 'react-native';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 import Button from '../../components/Forms/Button';
@@ -9,15 +9,12 @@ import TransactionTypeSelect from '../../components/Forms/TransactionTypeSelect'
 import ScreenHeader from '../../components/ScreenHeader';
 import { Category } from '../../models/Category';
 import CategorySelector from './CategorySelector';
-import { RegisterSchema } from './validator';
-
 import {
   Container,
-  Form,
-  FormInput,
-  InputFields,
-  FormCategorySelectButton
+  Form, FormCategorySelectButton, FormInput,
+  InputFields
 } from './styles';
+import { RegisterSchema } from './validator';
 
 type FormFields = {
   name: string;
@@ -27,7 +24,12 @@ type FormFields = {
 }
 
 const Register: React.FC = () => {
-  const { control, watch, handleSubmit, formState: { errors } } = useForm<FormFields>({
+  const {
+    control,
+    watch,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormFields>({
     mode: 'onBlur',
     resolver: yupResolver(RegisterSchema),
   });
@@ -51,12 +53,16 @@ const Register: React.FC = () => {
               placeholder='Nome'
               control={control}
               name="name"
+              autoCapitalize="sentences"
+              autoCorrect={false}
+              error={errors?.name}
             />
             <FormInput
               placeholder='Preço'
               keyboardType='numeric'
               control={control}
               name="price"
+              error={errors?.price}
             />
             <TransactionTypeSelect
               control={control}
@@ -66,6 +72,7 @@ const Register: React.FC = () => {
             <FormCategorySelectButton
               selectedCategory={watch('category')}
               onPress={() => setIsCategoryModalOpen(true)}
+              error={errors?.category?.key}
             />
           </InputFields>
 
