@@ -13,9 +13,8 @@ import {
 import theme from './src/global/styles/theme';
 import { CategoriesProvider } from './src/contexts/useCategories';
 
-import Dashboard from './src/screens/Dashboard';
-import Register from './src/screens/Register';
-import CategorySelector from './src/screens/Register/CategorySelector';
+import { Routes } from './src/routes/app.routes';
+import { NavigationContainer } from '@react-navigation/native';
 
 export function App() {
   const [fontsLoaded, error] = useFonts({
@@ -30,7 +29,9 @@ export function App() {
     <ThemeProvider theme={theme}>
       <CategoriesProvider>
         <StatusBar style="light" />
-        <Register />
+        <NavigationContainer>
+          <Routes />
+        </NavigationContainer>
       </CategoriesProvider>
     </ThemeProvider>
   );
