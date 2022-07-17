@@ -1,12 +1,12 @@
 import React from 'react';
-import { TouchableOpacityProps } from 'react-native';
+import { RectButtonProps } from 'react-native-gesture-handler';
 import { TransactionType } from '../../../models/Transactions';
 
 import { TransactionText, Container, Icon } from './styles';
 
 export type FormTransactionType = Extract<TransactionType, 'income' | 'outcome'>;
 
-interface TransactionTypeButtonProps extends TouchableOpacityProps {
+interface TransactionTypeButtonProps extends RectButtonProps {
   type: FormTransactionType;
   selected?: boolean;
 };

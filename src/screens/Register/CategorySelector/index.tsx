@@ -14,7 +14,8 @@ import {
   CategoryList,
   Container,
   Divider,
-  Footer
+  Footer,
+  SelectedAdvertiser
 } from './styles';
 
 type Props = {
@@ -47,11 +48,11 @@ const CategorySelector: React.FC<Props> = ({
         renderItem={({ item }) => (
           <CategoryItem
             onPress={() => field.onChange(item)}
-            selected={item.key === field.value?.key}
             activeOpacity={.6}
           >
             <CategoryIcon name={item.icon} color={item.color} />
             <CategoryItemText color={item.color}>{item.name}</CategoryItemText>
+            { item.key === field.value?.key && <SelectedAdvertiser /> }
           </CategoryItem>
         )}
       />

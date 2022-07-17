@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import { BorderlessButton } from 'react-native-gesture-handler';
 
 import {
   Avatar,
@@ -24,9 +25,9 @@ const Header: React.FC = () => {
           </User>
         </ProfileInfo>
 
-        <TouchableOpacity>
+        <BorderlessButton>
           <LogoutIcon />
-        </TouchableOpacity>
+        </BorderlessButton>
       </UserWrapper>
     </Container>
   );

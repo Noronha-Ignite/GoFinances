@@ -19,20 +19,10 @@ export const CategoryList = styled(FlatList as FlatListType<Category>)`
   flex: 1;
 `;
 
-type CategoryItemProps = {
-  selected?: boolean;
-}
-
-export const CategoryItem = styled.TouchableOpacity<CategoryItemProps>`
+export const CategoryItem = styled.TouchableOpacity`
   background: ${({
-      theme: {
-        colors: {
-          shape,
-          success_light
-        }
-      },
-      selected
-    }) => color(selected ? success_light : shape).alpha(0.15).string()
+      theme,
+    }) => theme.colors.background
   };
   
   flex-direction: row;
@@ -58,10 +48,19 @@ export const CategoryIcon = styled(Feather)`
 export const Divider = styled.View`
   width: 100%;
   height: 1px;
-  background: ${({ theme }) => theme.colors.text_contrast};
+  background: ${({ theme }) => theme.colors.text};
 `;
 
 export const Footer = styled.View`
   width: 100%;
   padding: 0 24px;
+`;
+
+export const SelectedAdvertiser = styled.View`
+  height: 10px;
+  width: 10px;
+  background-color: ${({ theme }) => theme.colors.success};
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: 8px;
 `;

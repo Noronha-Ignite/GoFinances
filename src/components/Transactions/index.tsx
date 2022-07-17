@@ -11,9 +11,9 @@ import {
 import TransactionCard from './TransactionCard';
 
 const MOCK_DATA: Transaction[] = [
-  { timestamp: 312312, name: 'Desenvolvimento de site', type: 'income', category: 'sell', amount: 'R$ 12.000,00' },
-  { timestamp: 312312312, name: 'Hamburgueria Pizzi', type: 'outcome', category: 'food', amount: 'R$ 59,00' },
-  { timestamp: 432423, name: 'Aluguel do apartamento', type: 'outcome', category: 'home', amount: 'R$ 1.500,00' }
+  { timestamp: 312312, name: 'Desenvolvimento de site', type: 'income', category: 'sell', amount: 12000 },
+  { timestamp: 312312312, name: 'Hamburgueria Pizzi', type: 'outcome', category: 'food', amount: 59 },
+  { timestamp: 432423, name: 'Aluguel do apartamento', type: 'outcome', category: 'home', amount: 1500 }
 ];
 
 const Transactions: React.FC = () => {

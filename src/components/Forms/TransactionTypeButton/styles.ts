@@ -1,17 +1,20 @@
 import styled, { css } from 'styled-components/native';
 import color from 'color';
-import { TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import { FormTransactionType } from '.';
+import { RectButton } from 'react-native-gesture-handler';
 
 type ContainerProps = {
   transactionType: FormTransactionType;
   selected?: boolean;
 }
 
-export const Container = styled(TouchableOpacity)<ContainerProps>`
+export const Container = styled(RectButton).attrs<ContainerProps>(({ theme }) => ({
+  activeOpacity: 0.025,
+  underlayColor: theme.colors.primary
+}))<ContainerProps>`
   flex-direction: row;
   flex: 1;
 

@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 
 import { useCategories } from '../../../contexts/useCategories';
 import { Transaction } from '../../../models/Transactions';
+import { formatCurrency } from '../../../utils/format';
 
 import {
   Container,
@@ -39,7 +40,7 @@ const TransactionCard: React.FC<TransactionCardProps> = ({ transaction }) => {
       <Title>{transaction.name}</Title>
       <Amount type={transaction.type}>
         {transaction.type === 'outcome' && '- '}
-        {transaction.amount}
+        {formatCurrency(transaction.amount)}
       </Amount>
 
       <Footer>

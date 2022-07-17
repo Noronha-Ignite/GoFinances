@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 export const RegisterSchema = Yup.object().shape({
   name: Yup.string().required('Campo obrigatório*'),
-  price: Yup.string().required('Campo obrigatório*'),
+  amount: Yup.string().required('Campo obrigatório*'),
   type: Yup.string().oneOf(['income', 'outcome'], 'Tipo inválido'),
   category: Yup.object().shape({
     key: Yup.string().required('Campo obrigatório*'),

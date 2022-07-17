@@ -18,7 +18,7 @@ import { RegisterSchema } from './validator';
 
 type FormFields = {
   name: string;
-  price: string;
+  amount: string;
   type: 'income' | 'outcome';
   category: Category;
 }
@@ -38,6 +38,8 @@ const Register: React.FC = () => {
 
   const onSubmit = (data: FormFields) => {
     console.log(data);
+
+    
   }
 
   return (
@@ -61,8 +63,8 @@ const Register: React.FC = () => {
               placeholder='Preço'
               keyboardType='numeric'
               control={control}
-              name="price"
-              error={errors?.price}
+              name="amount"
+              error={errors?.amount}
             />
             <TransactionTypeSelect
               control={control}
