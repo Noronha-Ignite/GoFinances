@@ -3,6 +3,7 @@ import { Category } from '../models/Category';
 
 type CategoriesContextProps = {
   categories: Category[];
+  getCategoryByKey: (key: string) => Category | undefined;
 }
 
 const categoriesContext = createContext({} as CategoriesContextProps);
@@ -17,8 +18,12 @@ export const CategoriesProvider: React.FC = ({ children }) => {
     { key: 'studies', name: 'Estudos', icon: 'book', color: '#9C001A' },
   ]);
 
+  const getCategoryByKey = (key: string) => {
+    return categories.find(category => category.key === key);
+  }
+
   return (
-    <categoriesContext.Provider value={{ categories }}>
+    <categoriesContext.Provider value={{ categories, getCategoryByKey }}>
       { children }
     </categoriesContext.Provider>
   );

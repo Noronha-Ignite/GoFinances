@@ -6,7 +6,7 @@ import theme from '../../global/styles/theme';
 import { TransactionType } from '../../models/Transactions';
 
 type TypeProps = {
-  cardType: TransactionType;
+  cardType: TransactionType | 'total';
 }
 
 type IconStyles = {
@@ -14,7 +14,7 @@ type IconStyles = {
   color: string;
 }
 
-function getFontColorByType(type: TransactionType, options?: { lessContrast?: boolean }) {
+function getFontColorByType(type: TransactionType | 'total', options?: { lessContrast?: boolean }) {
   if (type === 'total') {
     return theme.colors.shape;
   }
@@ -22,7 +22,7 @@ function getFontColorByType(type: TransactionType, options?: { lessContrast?: bo
   return options?.lessContrast ? theme.colors.text : theme.colors.title;
 }
 
-function getIconStylesByType(type: TransactionType): IconStyles {
+function getIconStylesByType(type: TransactionType | 'total'): IconStyles {
   switch(type) {
     case 'income':
       return { name: 'arrow-up-circle', color: theme.colors.success};

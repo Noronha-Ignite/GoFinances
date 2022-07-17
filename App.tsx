@@ -15,6 +15,7 @@ import { CategoriesProvider } from './src/contexts/useCategories';
 
 import { Routes } from './src/routes/app.routes';
 import { NavigationContainer } from '@react-navigation/native';
+import { TransactionContextProvider } from './src/contexts/useTransactions';
 
 export function App() {
   const [fontsLoaded, error] = useFonts({
@@ -28,10 +29,12 @@ export function App() {
   return (
     <ThemeProvider theme={theme}>
       <CategoriesProvider>
-        <StatusBar style="light" />
-        <NavigationContainer>
-          <Routes />
-        </NavigationContainer>
+        <TransactionContextProvider>
+          <StatusBar style="light" />
+          <NavigationContainer>
+            <Routes />
+          </NavigationContainer>
+        </TransactionContextProvider>
       </CategoriesProvider>
     </ThemeProvider>
   );

@@ -1,4 +1,4 @@
-export type TransactionType = 'income' | 'outcome' | 'total';
+export type TransactionType = 'income' | 'outcome';
 
 export type Transaction = {
   timestamp: number;
@@ -7,3 +7,5 @@ export type Transaction = {
   category: string;
   type: TransactionType;
 };
+
+export type NewTransaction = Omit<Transaction, 'timestamp'>;

@@ -15,8 +15,8 @@ import { TransactionType } from '../../models/Transactions';
 interface HighlightCardProps {
   title: string;
   amount: string;
-  lastTransaction: string;
-  type: TransactionType;
+  lastTransaction?: string;
+  type: TransactionType | 'total';
 }
 
 const HighlightCard: React.FC<HighlightCardProps> = ({
@@ -35,7 +35,7 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
 
       <Content>
         <Amount cardType={type}>{amount}</Amount>
-        <LastTransaction cardType={type}>{lastTransaction}</LastTransaction>
+        {lastTransaction && <LastTransaction cardType={type}>{lastTransaction}</LastTransaction>}
       </Content>
     </Container>
   );

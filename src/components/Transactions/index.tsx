@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { FlatList } from 'react-native';
-import { Transaction } from '../../models/Transactions';
+import React from 'react';
+import { useTransactions } from '../../contexts/useTransactions';
 
 import {
   Container,
@@ -10,14 +9,8 @@ import {
 
 import TransactionCard from './TransactionCard';
 
-const MOCK_DATA: Transaction[] = [
-  { timestamp: 312312, name: 'Desenvolvimento de site', type: 'income', category: 'sell', amount: 12000 },
-  { timestamp: 312312312, name: 'Hamburgueria Pizzi', type: 'outcome', category: 'food', amount: 59 },
-  { timestamp: 432423, name: 'Aluguel do apartamento', type: 'outcome', category: 'home', amount: 1500 }
-];
-
 const Transactions: React.FC = () => {
-  const [transactions, setTransactions] = useState<Transaction[]>(MOCK_DATA);
+  const { transactions } = useTransactions();
 
   return (
     <Container>
